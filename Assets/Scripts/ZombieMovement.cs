@@ -6,7 +6,6 @@ public class ZombieMovement : NPCMovement
 {
     [SerializeField]
     public Transform target;
-    // Update is called once per frame
 
     void FixedUpdate()
     {

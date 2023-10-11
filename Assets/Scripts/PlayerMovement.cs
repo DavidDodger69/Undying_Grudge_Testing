@@ -8,6 +8,12 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator animator;
+    [SerializeField]
+    private Camera mainCamera;
+    public Vector2 mouseWorldPos;
+
+    public Vector2 lookDir;
+    public float angle;
 
     Vector2 movement;
 
@@ -18,13 +24,19 @@ public class PlayerMovement : MonoBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized;
 
-        animator.SetFloat("Horizontal", movement.x);
-        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Horizontal", lookDir.x);
+        animator.SetFloat("Vertical", lookDir.y);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+
+        mouseWorldPos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        lookDir = mouseWorldPos - rb.position;
+        angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
+        //rb.rotation = angle;
     }
 }
