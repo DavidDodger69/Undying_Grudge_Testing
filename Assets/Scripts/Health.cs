@@ -9,6 +9,9 @@ public class Health : MonoBehaviour
     [SerializeField]
     public int maxHealth;
 
+    [SerializeField]
+    private GameObject gravePrefab;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -26,6 +29,10 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-        //Destroy(gameObject);
+        if (gameObject.tag == "Enemy")
+        {
+            Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation);
+        }
+        Destroy(gameObject);
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5620714091529440839}
   - component: {fileID: 5620714091529440840}
   - component: {fileID: 5620714091529440834}
+  - component: {fileID: -8411454356475129510}
   m_Layer: 6
   m_Name: Zombie
   m_TagString: Ally
@@ -146,6 +147,7 @@ MonoBehaviour:
   rb: {fileID: 5620714091529440837}
   animator: {fileID: 5620714091529440838}
   target: {fileID: 2759523558729184457, guid: 7a86418b914fd2e4589010d565ae656b, type: 3}
+  distance: 0.5
 --- !u!61 &5620714091529440840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,3 +188,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 10
+  gravePrefab: {fileID: 0}
+--- !u!114 &-8411454356475129510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5620714091529440841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bc8e3a744082f47b0f2892eb3535d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  separationDistance: 0.2
+  maxSpeed: 2
+  separationForce: 2
+  nearbyEntities:
+  - {fileID: 0}
+  resetInterval: 1
