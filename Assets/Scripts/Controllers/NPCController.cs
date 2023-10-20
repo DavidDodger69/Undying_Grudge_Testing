@@ -18,10 +18,15 @@ public class NPCController : MonoBehaviour
     [SerializeField]
     public float minimumRange;
 
+    public GameObject[] nearbyOpponents;
+    [SerializeField]
+    private string opponentTag;
+    [SerializeField]
+    public GameObject opponent;
+
 
     public virtual void FixedUpdate()
     {
-
         Movement(target, minimumRange);
     }
 
@@ -39,6 +44,31 @@ public class NPCController : MonoBehaviour
         else
         {
             animator.SetFloat("Speed", 0);
+        }
+    }
+
+    public void FindClosestEnemy()
+    {
+        nearbyOpponents = GameObject.FindGameObjectsWithTag(opponentTag);
+
+        GameObject closestOpponent = null;
+        float minDistance = float.MaxValue;
+        foreach (GameObject entity in nearbyOpponents)
+        {
+            // Calculate the distance to the current enemy
+            float distanceToOpponent = Vector3.Distance(transform.position, entity.transform.position);
+
+            // Check if this enemy is closer than the current closest enemy
+            if (distanceToOpponent < minDistance)
+            {
+                minDistance = distanceToOpponent;
+                closestOpponent = entity;
+            }
+        }
+
+        if (closestOpponent != null)
+        {
+            opponent = closestOpponent;
         }
     }
 }

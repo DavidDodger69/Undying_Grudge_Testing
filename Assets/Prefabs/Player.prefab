@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2469227788813652155}
   - component: {fileID: 2469227788813652159}
   - component: {fileID: 2469227788813652144}
+  - component: {fileID: -3326337996401620569}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -209,6 +210,10 @@ MonoBehaviour:
   moveSpeed: 1.5
   rb: {fileID: 2469227788813652156}
   animator: {fileID: 2469227788813652159}
+  mainCamera: {fileID: 0}
+  mouseWorldPos: {x: 0, y: 0}
+  lookDir: {x: 0, y: 0}
+  angle: 0
 --- !u!95 &2469227788813652159
 Animator:
   serializedVersion: 4
@@ -255,3 +260,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.13, y: 0.05969309}
   m_EdgeRadius: 0
+--- !u!114 &-3326337996401620569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2469227788813652154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce2368968fd160147861217373029605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 50
+  gravePrefab: {fileID: 0}

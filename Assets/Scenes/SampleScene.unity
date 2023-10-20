@@ -24045,6 +24045,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7117773658636599369, guid: a88846df3fa80a44db6944fa8d048c06, type: 3}
+      propertyPath: findResetInterval
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3401232824991885696, guid: a88846df3fa80a44db6944fa8d048c06, type: 3}
       propertyPath: m_Offset.x
       value: 0
@@ -25100,7 +25104,7 @@ GameObject:
   m_Layer: 0
   m_Name: ClickPoint1
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25217,6 +25221,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2759523557756548535, guid: 7a86418b914fd2e4589010d565ae656b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2759523558729184457, guid: 7a86418b914fd2e4589010d565ae656b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -25403,6 +25411,22 @@ PrefabInstance:
       propertyPath: waypoint
       value: 
       objectReference: {fileID: 2062608874}
+    - target: {fileID: 5620714091529440839, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: attackDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620714091529440839, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: enemyDistance
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620714091529440839, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: waypointDistance
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620714091529440839, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: waypointAttackDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5620714091529440841, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
       propertyPath: m_Name
       value: Zombie

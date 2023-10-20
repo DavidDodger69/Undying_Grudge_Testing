@@ -148,12 +148,13 @@ MonoBehaviour:
   animator: {fileID: 5620714091529440838}
   target: {fileID: 0}
   minimumRange: 0
+  nearbyOpponents: []
+  opponentTag: Enemy
+  opponent: {fileID: 0}
   waypoint: {fileID: 0}
   waypointDistance: 0.5
   waypointAttackDistance: 1.5
-  nearbyEnemies: []
-  findResetInterval: 5
-  enemy: {fileID: 0}
+  findResetInterval: 3
   enemyDistance: 1.5
   attackDistance: 0.2
   attackDamage: 5
@@ -197,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 20
   gravePrefab: {fileID: 0}
 --- !u!114 &-8411454356475129510
 MonoBehaviour:

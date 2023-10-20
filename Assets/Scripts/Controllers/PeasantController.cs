@@ -2,15 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieController : NPCController
+public class PeasantController : NPCController
 {
-    [Header("Waypoint")]
-    public Transform waypoint;
-    [SerializeField]
-    float waypointDistance;
-    [SerializeField]
-    float waypointAttackDistance;
-
     [Header("Attack")]
     public float findResetInterval = 5.0f;
     private float findTimer = 0.0f;
@@ -24,7 +17,6 @@ public class ZombieController : NPCController
     int attackDamage;
     public float attackResetInterval = 2.0f;
     private float attackTimer = 0.0f;
-
     public override void FixedUpdate()
     {
         findTimer += Time.deltaTime;
@@ -36,27 +28,22 @@ public class ZombieController : NPCController
             findTimer = 0.0f;
         }
 
-        if (Vector2.Distance(waypoint.position, gameObject.transform.position) > waypointDistance)
-        {
-            target = waypoint;
-            minimumRange = waypointDistance;
-        }
-
         if (opponent != null)
         {
-            if ((Vector2.Distance(waypoint.position, gameObject.transform.position) <= waypointAttackDistance) &&
-                Vector2.Distance(opponent.transform.position, gameObject.transform.position) < enemyDistance)
+            if (Vector2.Distance(opponent.transform.position, gameObject.transform.position) < enemyDistance)
             {
                 target = opponent.transform;
                 minimumRange = attackDistance;
+
                 if (Vector2.Distance(opponent.transform.position, gameObject.transform.position) < attackDistance)
                 {
                     Attack(opponent);
                 }
             }
         }
-        else {
-            target = waypoint;
+        else
+        {
+            target = gameObject.transform;
         }
 
         base.FixedUpdate();

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3401232824991885698}
   - component: {fileID: 3401232824991885696}
   - component: {fileID: 4531879714240195426}
+  - component: {fileID: -7117773658636599369}
   m_Layer: 0
   m_Name: Peasant
   m_TagString: Enemy
@@ -168,5 +169,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 40
   gravePrefab: {fileID: 3374474676506651577, guid: 25c75e85f344b9e47bb67551c2bd6dc3, type: 3}
+--- !u!114 &-7117773658636599369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3401232824991885705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 724fbab12f7b0964ca56f4596eeae8b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  rb: {fileID: 3401232824991885711}
+  animator: {fileID: 3401232824991885698}
+  target: {fileID: 0}
+  minimumRange: 0
+  nearbyOpponents: []
+  opponentTag: Ally
+  opponent: {fileID: 0}
+  findResetInterval: 3
+  enemyDistance: 1.5
+  attackDistance: 0.2
+  attackDamage: 5
+  attackResetInterval: 2

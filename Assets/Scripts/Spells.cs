@@ -37,7 +37,7 @@ public class Spells : MonoBehaviour
             Shoot();
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && onGrave)
         {
             AnimateDead();
             Destroy(graveGameobject);
