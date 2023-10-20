@@ -146,7 +146,9 @@ MonoBehaviour:
   moveSpeed: 1
   rb: {fileID: 5620714091529440837}
   animator: {fileID: 5620714091529440838}
-  target: {fileID: 2759523558729184457, guid: 7a86418b914fd2e4589010d565ae656b, type: 3}
+  target: {fileID: 0}
+  minimumRange: 0
+  waypoint: {fileID: 0}
   distance: 0.5
 --- !u!61 &5620714091529440840
 BoxCollider2D:

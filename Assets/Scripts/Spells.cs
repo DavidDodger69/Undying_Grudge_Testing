@@ -80,7 +80,7 @@ public class Spells : MonoBehaviour
     void AnimateDead()
     {
         GameObject newZombie = Instantiate(zombiePrefab, graveGameobject.transform.position, graveGameobject.transform.rotation);
-        newZombie.GetComponent<ZombieMovement>().target = target1Prefab.transform;
+        newZombie.GetComponent<ZombieController>().waypoint = target1Prefab.transform;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
