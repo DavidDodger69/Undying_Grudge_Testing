@@ -46,7 +46,8 @@ public class ZombieController : NPCController
             minimumRange = waypointDistance;
         }
 
-        if (enemy != null) {
+        if (enemy != null)
+        {
             if ((Vector2.Distance(waypoint.position, gameObject.transform.position) <= waypointAttackDistance) &&
                 Vector2.Distance(enemy.transform.position, gameObject.transform.position) < enemyDistance)
             {
@@ -58,6 +59,9 @@ public class ZombieController : NPCController
                 }
             }
         }
+        else {
+            target = waypoint;
+        }
 
         base.FixedUpdate();
     }
@@ -68,6 +72,10 @@ public class ZombieController : NPCController
         {
             attackTarget.GetComponent<Health>().TakeDamage(attackDamage);
             attackTimer = 0.0f;
+        }
+        if (enemy = null)
+        {
+
         }
     }
 
