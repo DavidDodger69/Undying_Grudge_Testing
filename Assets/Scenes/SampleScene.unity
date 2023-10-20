@@ -25085,7 +25085,7 @@ Transform:
   - {fileID: 1707921466}
   - {fileID: 843418247}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2062608872
 GameObject:
@@ -25100,7 +25100,7 @@ GameObject:
   m_Layer: 0
   m_Name: ClickPoint1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -25131,7 +25131,7 @@ Transform:
   m_Children:
   - {fileID: 13215893}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2469227788398289784
 PrefabInstance:
@@ -25166,7 +25166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469227788813652158, guid: f3697898c9fc4424dab3453afd0bf8a2, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2469227788813652158, guid: f3697898c9fc4424dab3453afd0bf8a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25335,9 +25335,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8411454356475129510, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: resetInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8411454356475129510, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: separationForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -8411454356475129510, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: nearbyEntities.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454253748822766946, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5620714091529440835, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5620714091529440835, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25382,7 +25398,11 @@ PrefabInstance:
     - target: {fileID: 5620714091529440839, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 13215893}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5620714091529440839, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
+      propertyPath: waypoint
+      value: 
+      objectReference: {fileID: 2062608874}
     - target: {fileID: 5620714091529440841, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
       propertyPath: m_Name
       value: Zombie

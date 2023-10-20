@@ -149,7 +149,15 @@ MonoBehaviour:
   target: {fileID: 0}
   minimumRange: 0
   waypoint: {fileID: 0}
-  distance: 0.5
+  waypointDistance: 0.5
+  waypointAttackDistance: 1.5
+  nearbyEnemies: []
+  findResetInterval: 5
+  enemy: {fileID: 0}
+  enemyDistance: 1.5
+  attackDistance: 0.2
+  attackDamage: 5
+  attackResetInterval: 2
 --- !u!61 &5620714091529440840
 BoxCollider2D:
   m_ObjectHideFlags: 0
