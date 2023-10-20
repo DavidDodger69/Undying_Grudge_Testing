@@ -72,7 +72,6 @@ public class Spells : MonoBehaviour
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        //Physics2D.IgnoreCollision(rb.GetComponent<BoxCollider2D>(), player.GetComponent<BoxCollider2D>());
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bullet"), LayerMask.NameToLayer("Allies"));
         rb.AddForce(direction.normalized * bulletForce, ForceMode2D.Impulse);
     }
