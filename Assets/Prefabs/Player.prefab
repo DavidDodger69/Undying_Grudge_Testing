@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7499907086097834834}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,8 +211,9 @@ MonoBehaviour:
   zombiePrefab: {fileID: 5620714091529440841, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
   target1Prefab: {fileID: 0}
   bulletForce: 1.2
+  animator: {fileID: 7499907086097834838}
   basic_spell_cooldown: 0
-  basic_spell_cooldown_reset: 20
+  basic_spell_cooldown_reset: 22
   onGrave: 0
   graveGameobject: {fileID: 0}
 --- !u!1 &7499907086433455624

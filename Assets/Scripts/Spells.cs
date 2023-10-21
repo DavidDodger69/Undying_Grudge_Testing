@@ -5,7 +5,10 @@ using UnityEngine;
 public class Spells : MonoBehaviour
 {
     public PlayerMovement player;
-    public Transform firePoint;
+
+    [Header("Attacks")]
+    public Transform firePointRight;
+    public Transform firePointLeft;
 
     [Header("Prefabs")]
     public GameObject bulletPrefab;
@@ -14,6 +17,8 @@ public class Spells : MonoBehaviour
 
     [SerializeField]
     public float bulletForce;
+
+    public Animator animator;
 
     [Header("Cooldowns")]
     [SerializeField]
@@ -32,7 +37,7 @@ public class Spells : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0) && basic_spell_cooldown == 0)
         {
             Shoot();
         }
@@ -42,8 +47,12 @@ public class Spells : MonoBehaviour
             AnimateDead();
             Destroy(graveGameobject);
         }
+        if (basic_spell_cooldown == 0)
+        {
+            animator.SetBool("Shooting", false);
+        }
     }
-
+    
     private void FixedUpdate()
     {
         if (basic_spell_cooldown > 0)
@@ -54,22 +63,30 @@ public class Spells : MonoBehaviour
 
     void Shoot()
     {
-        if (basic_spell_cooldown == 0)
-        {
-            BasicSpell();
-            basic_spell_cooldown = basic_spell_cooldown_reset;
-        }
+        animator.SetBool("Shooting", true);
+        Invoke("BasicSpell", 0.5f);
+        basic_spell_cooldown = basic_spell_cooldown_reset;
     }
 
     void BasicSpell()
     {
+        Transform firePoint;
+
         // Get the mouse position in world space
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Calculate the direction from the firePoint to the mouse position
-        Vector2 direction = (mousePosition - firePoint.position);
+        Vector2 direction = (mousePosition - firePointRight.position);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+        if (direction.x < 0)
+        {
+            firePoint = firePointLeft;
+        } else
+        {
+            firePoint = firePointRight;
+        }
+ 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bullet"), LayerMask.NameToLayer("Allies"));
