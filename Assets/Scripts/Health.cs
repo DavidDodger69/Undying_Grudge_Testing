@@ -12,9 +12,18 @@ public class Health : MonoBehaviour
     [SerializeField]
     private GameObject gravePrefab;
 
+    public SoulIcon soulIcon;
+
     void Start()
     {
         currentHealth = maxHealth;
+
+        if(gameObject.tag == "Enemy")
+        {
+            GameObject soulIconObject = GameObject.FindWithTag("SoulIcon");
+            if(soulIconObject != null)
+            soulIcon = soulIconObject.GetComponent<SoulIcon>();
+        }
     }
 
     public void TakeDamage(int damage) 
@@ -32,6 +41,7 @@ public class Health : MonoBehaviour
         if (gameObject.tag == "Enemy")
         {
             Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation);
+            soulIcon.EnemyKilled();
         }
         Destroy(gameObject);
     }

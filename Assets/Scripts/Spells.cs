@@ -76,17 +76,19 @@ public class Spells : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         // Calculate the direction from the firePoint to the mouse position
-        Vector2 direction = (mousePosition - firePointRight.position);
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Vector2 mouseDirection = (mousePosition - gameObject.transform.position);
+        
 
-        if (direction.x < 0)
+        if (mouseDirection.x < 0)
         {
             firePoint = firePointLeft;
         } else
         {
             firePoint = firePointRight;
         }
- 
+        Vector2 direction = (mousePosition - firePoint.position);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Bullet"), LayerMask.NameToLayer("Allies"));
