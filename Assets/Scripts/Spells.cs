@@ -27,11 +27,19 @@ public class Spells : MonoBehaviour
     private int basic_spell_cooldown_reset;
 
     [SerializeField]
-    private bool onGrave = false;
+    private int animate_spell_cooldown;
+    [SerializeField]
+    private int animate_spell_cooldown_reset;
+
+    [SerializeField]
+    public bool onGrave = false;
     [SerializeField]
     private GameObject graveGameobject;
 
-    
+    public SoulIcon soulIcon;
+    public Tutorial_Controller tutorial;
+    public GameObject attack_box;
+
 
 
     // Update is called once per frame
@@ -44,12 +52,20 @@ public class Spells : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && onGrave)
         {
-            AnimateDead();
-            Destroy(graveGameobject);
+            tutorial.has_raisedDeath = true;
+            animate_spell_cooldown = animate_spell_cooldown_reset;
+            animator.SetBool("Raise", true);
+            player.moveSpeed = 0.5f;
+            Invoke("AnimateDead", 0.5f);
+            
         }
         if (basic_spell_cooldown == 0)
         {
             animator.SetBool("Shooting", false);
+        }
+        if (animate_spell_cooldown == 0)
+        {
+            animator.SetBool("Raise", false);
         }
     }
     
@@ -59,12 +75,18 @@ public class Spells : MonoBehaviour
         {
             basic_spell_cooldown--;
         }
+
+        if (animate_spell_cooldown > 0)
+        {
+            animate_spell_cooldown--;
+        }
     }
 
     void Shoot()
     {
         animator.SetBool("Shooting", true);
         Invoke("BasicSpell", 0.5f);
+        tutorial.has_shot = true;
         basic_spell_cooldown = basic_spell_cooldown_reset;
     }
 
@@ -99,6 +121,9 @@ public class Spells : MonoBehaviour
     {
         GameObject newZombie = Instantiate(zombiePrefab, graveGameobject.transform.position, graveGameobject.transform.rotation);
         newZombie.GetComponent<ZombieController>().waypoint = target1Prefab.transform;
+        soulIcon.EnemyRaised();
+        Destroy(graveGameobject);
+        player.moveSpeed = 1f;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -106,6 +131,11 @@ public class Spells : MonoBehaviour
         if (collision.gameObject.tag == "Grave")
             onGrave = true;
             graveGameobject = collision.gameObject;
+
+        if (collision.gameObject == attack_box)
+        {
+            tutorial.inAttackBox = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -113,5 +143,10 @@ public class Spells : MonoBehaviour
         if (collision.gameObject.tag == "Grave")
             onGrave = false;
             graveGameobject = null;
+
+        if (collision.gameObject == attack_box)
+        {
+            tutorial.inAttackBox = false;
+        }
     }
 }

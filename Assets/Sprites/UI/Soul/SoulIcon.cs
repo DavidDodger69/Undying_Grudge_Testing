@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class SoulIcon : MonoBehaviour
 {
     public Image iconImage;
-    public int maxEnemies = 10; // Change this to the number of enemies needed to fill the icon
+    public int maxEnemies; // Change this to the number of enemies needed to fill the icon
     [SerializeField]
-    private float enemyKillCount = 0;
+    public float enemyRaiseCount = 0;
 
     private void Start()
     {
@@ -14,18 +14,18 @@ public class SoulIcon : MonoBehaviour
         UpdateSoulIcon();
     }
 
-    public void EnemyKilled()
+    public void EnemyRaised()
     {
-        if (enemyKillCount < maxEnemies)
+        if (enemyRaiseCount < maxEnemies)
         {
-            enemyKillCount++;
+            enemyRaiseCount++;
             UpdateSoulIcon();
         }
     }
 
     private void UpdateSoulIcon()
     {
-        float fillAmount = (float)enemyKillCount / maxEnemies;
+        float fillAmount = (float)enemyRaiseCount / maxEnemies;
         iconImage.fillAmount = fillAmount;
 
         // You can also change the image sprite when it's full or use animations here

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7499907086097834845}
   - component: {fileID: 7499907086097834836}
-  - component: {fileID: 7499907086097834837}
-  - component: {fileID: 7499907086097834840}
   - component: {fileID: 7499907086097834838}
+  - component: {fileID: 7499907086097834837}
   - component: {fileID: 7499907086097834839}
+  - component: {fileID: 7499907086097834840}
   - component: {fileID: 7499907086097834832}
   - component: {fileID: 7499907086097834834}
   m_Layer: 6
@@ -92,6 +92,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7499907086097834838
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499907086097834841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c2016cf82f804c4bb3638916377239d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &7499907086097834837
 Rigidbody2D:
   serializedVersion: 4
@@ -113,45 +133,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7499907086097834840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499907086097834841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97287b517465e0349b5ce87bf3733319, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  rb: {fileID: 7499907086097834837}
-  animator: {fileID: 7499907086097834838}
-  mainCamera: {fileID: 7499907085329262820}
-  mouseWorldPos: {x: 0, y: 0}
-  lookDir: {x: 0, y: 0}
-  angle: 0
---- !u!95 &7499907086097834838
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7499907086097834841}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2c2016cf82f804c4bb3638916377239d, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &7499907086097834839
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,6 +159,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.17238905, y: 0.1290962}
   m_EdgeRadius: 0
+--- !u!114 &7499907086097834840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7499907086097834841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97287b517465e0349b5ce87bf3733319, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  rb: {fileID: 7499907086097834837}
+  animator: {fileID: 7499907086097834838}
+  mainCamera: {fileID: 7499907085329262820}
+  mouseWorldPos: {x: 0, y: 0}
+  lookDir: {x: 0, y: 0}
+  angle: 0
 --- !u!114 &7499907086097834832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +206,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7499907086097834840}
-  firePoint: {fileID: 7499907086433455631}
+  firePointRight: {fileID: 0}
+  firePointLeft: {fileID: 0}
   bulletPrefab: {fileID: 5494248632441295529, guid: 34dda2480be692e4898b5ce49e691197, type: 3}
   zombiePrefab: {fileID: 5620714091529440841, guid: 44236ccfea1a11d42b38c10ccc6aa1f7, type: 3}
   target1Prefab: {fileID: 0}
@@ -216,6 +217,7 @@ MonoBehaviour:
   basic_spell_cooldown_reset: 22
   onGrave: 0
   graveGameobject: {fileID: 0}
+  soulIcon: {fileID: 0}
 --- !u!1 &7499907086433455624
 GameObject:
   m_ObjectHideFlags: 0

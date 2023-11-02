@@ -12,18 +12,13 @@ public class Health : MonoBehaviour
     [SerializeField]
     private GameObject gravePrefab;
 
-    public SoulIcon soulIcon;
+
+    public bool is_tutorial_NPC = false;
+    public bool tutorial_NPC_Died = false;
 
     void Start()
     {
         currentHealth = maxHealth;
-
-        if(gameObject.tag == "Enemy")
-        {
-            GameObject soulIconObject = GameObject.FindWithTag("SoulIcon");
-            if(soulIconObject != null)
-            soulIcon = soulIconObject.GetComponent<SoulIcon>();
-        }
     }
 
     public void TakeDamage(int damage) 
@@ -40,8 +35,11 @@ public class Health : MonoBehaviour
     {
         if (gameObject.tag == "Enemy")
         {
-            Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation);
-            soulIcon.EnemyKilled();
+            if (is_tutorial_NPC)
+            {
+                tutorial_NPC_Died = true;
+            }
+            Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation); 
         }
         Destroy(gameObject);
     }
