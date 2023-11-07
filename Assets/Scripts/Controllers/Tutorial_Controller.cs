@@ -89,12 +89,13 @@ public class Tutorial_Controller : MonoBehaviour
                         popupWindowSprite.color = Color.clear;
                     }
                 }
-
+                /*
                 if (SoulIcon.enemyRaiseCount == SoulIcon.maxEnemies)
                 {
                     popupWindowSprite.sprite = popups[6];
                     popupWindowSprite.color = Color.white;
                 }
+                */
             }
         }
         else
