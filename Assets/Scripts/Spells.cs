@@ -191,7 +191,7 @@ public class Spells : MonoBehaviour
 
         if (collision.gameObject == tutorial_box)
         {
-            tutorial.tutorial_active = false;
+            tutorial.popupWindowSprite.color = Color.clear;
         }
     }
 }

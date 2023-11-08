@@ -114,7 +114,6 @@ public class Tutorial_Controller : MonoBehaviour
             {
                 waypoint1.SetActive(true);
             }
-            popupWindowSprite.color = Color.clear;
         }
     }
 

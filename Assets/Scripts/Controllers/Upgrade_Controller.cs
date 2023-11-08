@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Upgrade_Controller : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class Upgrade_Controller : MonoBehaviour
     [Header("Prefabs")]
     public GameObject magic_bolt;
     public GameObject skelton;
+
+    public Sprite[] popups;
+    public Image popUp;
 
     // Update is called once per frame
     private void Start()
@@ -23,6 +27,7 @@ public class Upgrade_Controller : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire3") && SoulIcon.enemyRaiseCount == SoulIcon.maxEnemies)
         {
+            popUp.color = Color.white;
             UnlockUpgrade();
         }
     }
@@ -38,18 +43,29 @@ public class Upgrade_Controller : MonoBehaviour
         {
             case 1:
                 magic_bolt.GetComponent<Basic_Spell>().damage = 10;
+                popUp.sprite = popups[upgradesUnlocked - 1];
                 break;
             case 2:
                 gameObject.GetComponent<Spells>().canHeal = true;
+                popUp.sprite = popups[upgradesUnlocked - 1];
                 break;
             case 3:
                 skelton.GetComponent<Health>().maxHealth = skelton.GetComponent<Health>().maxHealth * 2;
+                popUp.sprite = popups[upgradesUnlocked - 1];
                 break;
             case 4:
                 skelton.GetComponent<ZombieController>().attackDamage = skelton.GetComponent<ZombieController>().attackDamage * 2;
+                popUp.sprite = popups[upgradesUnlocked - 1];
                 break;
             default:
                 break;
         }
+
+        Invoke("removePopupWindow", 5f);
+    }
+
+    void removePopupWindow()
+    {
+        popUp.color = Color.clear;
     }
 }
