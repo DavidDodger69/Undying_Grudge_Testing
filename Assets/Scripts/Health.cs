@@ -73,5 +73,10 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+
+        if (is_player || is_paladin)
+        {
+            healthbar.SetHealth(currentHealth);
+        }
     }
 }
