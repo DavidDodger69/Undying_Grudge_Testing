@@ -12,7 +12,6 @@ public class NPCController : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
 
-
     [SerializeField]
     public Transform target;
     [SerializeField]

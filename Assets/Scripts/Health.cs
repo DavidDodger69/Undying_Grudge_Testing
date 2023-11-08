@@ -15,8 +15,13 @@ public class Health : MonoBehaviour
     public bool is_tutorial_NPC = false;
     public bool tutorial_NPC_Died = false;
     public bool is_player = false;
+    public bool is_paladin = false;
 
+    [Header("Player")]
     public HealthBar healthbar;
+
+    [Header("Paladin")]
+    public GameObject victory;
 
     void Start()
     {
@@ -46,11 +51,17 @@ public class Health : MonoBehaviour
     {
         if (gameObject.tag == "Enemy")
         {
-            if (is_tutorial_NPC)
+            if (!is_paladin)
             {
-                tutorial_NPC_Died = true;
+                if (is_tutorial_NPC)
+                {
+                    tutorial_NPC_Died = true;
+                }
+                Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation);
+            } else if(is_paladin)
+            {
+                victory.SetActive(true);
             }
-            Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation); 
         }
         Destroy(gameObject);
     }
