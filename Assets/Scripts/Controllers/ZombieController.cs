@@ -52,11 +52,15 @@ public class ZombieController : NPCController
                 if (Vector2.Distance(opponent.transform.position, gameObject.transform.position) < attackDistance)
                 {
                     Attack(opponent);
+                } else
+                {
+                    animator.SetBool("isAttaking", false);
                 }
             }
         }
         else {
             target = waypoint;
+            animator.SetBool("isAttaking", false);
         }
 
         base.FixedUpdate();
@@ -66,6 +70,7 @@ public class ZombieController : NPCController
     {
         if (attackTimer >= attackResetInterval)
         {
+            animator.SetBool("isAttaking", true);
             attackTarget.GetComponent<Health>().TakeDamage(attackDamage);
             attackTimer = 0.0f;
         }
