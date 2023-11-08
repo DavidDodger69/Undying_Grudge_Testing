@@ -23,7 +23,7 @@ public class SoulIcon : MonoBehaviour
         }
     }
 
-    private void UpdateSoulIcon()
+    public void UpdateSoulIcon()
     {
         float fillAmount = (float)enemyRaiseCount / maxEnemies;
         iconImage.fillAmount = fillAmount;

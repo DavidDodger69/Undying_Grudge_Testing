@@ -20,8 +20,7 @@ public class ZombieController : NPCController
     [SerializeField]
     float attackDistance;
 
-    [SerializeField]
-    int attackDamage;
+    public int attackDamage;
     public float attackResetInterval = 2.0f;
     private float attackTimer = 0.0f;
 

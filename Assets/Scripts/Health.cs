@@ -26,7 +26,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        if (is_player)
+        if (is_player || is_paladin)
         {
             healthbar.SetMaxHealth(maxHealth);
         }
@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
 
-        if (is_player)
+        if (is_player || is_paladin)
         {
             healthbar.SetHealth(currentHealth);
         }
@@ -64,5 +64,14 @@ public class Health : MonoBehaviour
             }
         }
         Destroy(gameObject);
+    }
+
+    public void Heal(int healing)
+    {
+        currentHealth += healing;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
     }
 }

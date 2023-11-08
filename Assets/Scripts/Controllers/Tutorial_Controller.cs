@@ -15,6 +15,8 @@ public class Tutorial_Controller : MonoBehaviour
     public bool has_shot = false;
     public bool has_raisedDeath = false;
     public bool has_commanded = false;
+    public bool can_upgrade = false;
+    public bool has_upgraded = false;
 
     public bool inAttackBox = false;
 
@@ -89,17 +91,29 @@ public class Tutorial_Controller : MonoBehaviour
                         popupWindowSprite.color = Color.clear;
                     }
                 }
-                /*
-                if (SoulIcon.enemyRaiseCount == SoulIcon.maxEnemies)
+
+                if (has_commanded)
                 {
-                    popupWindowSprite.sprite = popups[6];
-                    popupWindowSprite.color = Color.white;
+                    if (SoulIcon.enemyRaiseCount == SoulIcon.maxEnemies)
+                    {
+                        can_upgrade = true;
+                        popupWindowSprite.sprite = popups[7];
+                        popupWindowSprite.color = Color.white;
+                    }
+                    if (Input.GetButtonDown("Fire3") && can_upgrade)
+                    {
+                        has_upgraded = true;
+                        tutorial_active = false;
+                    }
                 }
-                */
             }
         }
         else
         {
+            if (waypoint1.active == false)
+            {
+                waypoint1.SetActive(true);
+            }
             popupWindowSprite.color = Color.clear;
         }
     }

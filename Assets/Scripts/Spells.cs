@@ -20,6 +20,8 @@ public class Spells : MonoBehaviour
 
     public Animator animator;
 
+    
+
     [Header("Cooldowns")]
     [SerializeField]
     private int basic_spell_cooldown;
@@ -39,8 +41,16 @@ public class Spells : MonoBehaviour
     public SoulIcon soulIcon;
     public Tutorial_Controller tutorial;
     public GameObject attack_box;
+    public GameObject tutorial_box;
 
+    [Header("Upgrades")]
+    public bool canHeal = false;
 
+    public GameObject[] nearbyAllies;
+    [SerializeField]
+    private int heal_spell_cooldown;
+    [SerializeField]
+    private int heal_spell_cooldown_reset;
 
     // Update is called once per frame
     void Update()
@@ -59,11 +69,20 @@ public class Spells : MonoBehaviour
             Invoke("AnimateDead", 0.5f);
             
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl) && canHeal && heal_spell_cooldown == 0)
+        {
+            animator.SetBool("Raise", true);
+            heal_spell_cooldown = heal_spell_cooldown_reset;
+            player.moveSpeed = 0.5f;
+            Invoke("HealAllies", 0.1f);
+        }
+
         if (basic_spell_cooldown == 0)
         {
             animator.SetBool("Shooting", false);
         }
-        if (animate_spell_cooldown == 0)
+        if (animate_spell_cooldown == 0 && heal_spell_cooldown == 0)
         {
             animator.SetBool("Raise", false);
         }
@@ -79,6 +98,11 @@ public class Spells : MonoBehaviour
         if (animate_spell_cooldown > 0)
         {
             animate_spell_cooldown--;
+        }
+
+        if (heal_spell_cooldown > 0)
+        {
+            heal_spell_cooldown--;
         }
     }
 
@@ -126,6 +150,22 @@ public class Spells : MonoBehaviour
         player.moveSpeed = 1f;
     }
 
+    void HealAllies()
+    {
+        nearbyAllies = GameObject.FindGameObjectsWithTag("Ally");
+        float minDistanceToHeal = 2;
+
+        foreach (GameObject entity in nearbyAllies)
+        {
+            float distanceToAlly = Vector3.Distance(transform.position, entity.transform.position);
+            if (distanceToAlly < minDistanceToHeal)
+            {
+                entity.GetComponent<Health>().Heal(5);
+            }
+        }
+        player.moveSpeed = 1f;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Grave")
@@ -147,6 +187,11 @@ public class Spells : MonoBehaviour
         if (collision.gameObject == attack_box)
         {
             tutorial.inAttackBox = false;
+        }
+
+        if (collision.gameObject == tutorial_box)
+        {
+            tutorial.tutorial_active = false;
         }
     }
 }
