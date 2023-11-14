@@ -15,6 +15,9 @@ public class Upgrade_Controller : MonoBehaviour
     public Sprite[] popups;
     public Image popUp;
 
+    [Header("Testing")]
+    public int upgradeCounter;
+
     // Update is called once per frame
     private void Start()
     {
@@ -25,6 +28,11 @@ public class Upgrade_Controller : MonoBehaviour
 
     void Update()
     {
+        if (SoulIcon.enemyRaiseCount == SoulIcon.maxEnemies)
+        {
+            upgradeCounter++;
+        }
+
         if (Input.GetButtonDown("Fire3") && SoulIcon.enemyRaiseCount == SoulIcon.maxEnemies)
         {
             popUp.color = Color.white;
