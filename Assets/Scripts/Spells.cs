@@ -52,6 +52,8 @@ public class Spells : MonoBehaviour
 
     [Header("Testing")]
     public int number_of_Animates;
+    public int number_of_Shots;
+    public int number_of_Heals;
 
     // Update is called once per frame
     void Update()
@@ -109,6 +111,7 @@ public class Spells : MonoBehaviour
 
     void Shoot()
     {
+        number_of_Shots++;
         animator.SetBool("Shooting", true);
         Invoke("BasicSpell", 0.5f);
         tutorial.has_shot = true;
@@ -156,6 +159,7 @@ public class Spells : MonoBehaviour
     {
         nearbyAllies = GameObject.FindGameObjectsWithTag("Ally");
         float minDistanceToHeal = 2;
+        number_of_Heals++;
 
         foreach (GameObject entity in nearbyAllies)
         {
