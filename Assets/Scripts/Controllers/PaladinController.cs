@@ -29,6 +29,8 @@ public class PaladinController : NPCController
 
     public override void FixedUpdate()
     {
+        bossFightTimeCounter++;
+
         findTimer += Time.deltaTime;
         attackTimer += Time.deltaTime;
 
