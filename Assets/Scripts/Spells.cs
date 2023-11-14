@@ -20,8 +20,6 @@ public class Spells : MonoBehaviour
 
     public Animator animator;
 
-    
-
     [Header("Cooldowns")]
     [SerializeField]
     private int basic_spell_cooldown;
@@ -51,6 +49,9 @@ public class Spells : MonoBehaviour
     private int heal_spell_cooldown;
     [SerializeField]
     private int heal_spell_cooldown_reset;
+
+    [Header("Testing")]
+    public int number_of_Animates;
 
     // Update is called once per frame
     void Update()
@@ -146,6 +147,7 @@ public class Spells : MonoBehaviour
         GameObject newZombie = Instantiate(zombiePrefab, graveGameobject.transform.position, graveGameobject.transform.rotation);
         newZombie.GetComponent<ZombieController>().waypoint = target1Prefab.transform;
         soulIcon.EnemyRaised();
+        number_of_Animates++;
         Destroy(graveGameobject);
         player.moveSpeed = 1f;
     }
