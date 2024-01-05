@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using Unity.Services.Analytics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +47,15 @@ public class Upgrade_Controller : MonoBehaviour
 
     void UnlockUpgrade()
     {
+        //Testing
+        Dictionary<string, object> parameters = new Dictionary<string, object>()
+        {
+            { "upgrade_Timer", upgradeCounter },
+        };
+
+        AnalyticsService.Instance.CustomData("AquiredUpgrade", parameters);
+        //End Testing
+        upgradeCounter = 0;
         SoulIcon.maxEnemies = SoulIcon.maxEnemies * 2;
         SoulIcon.enemyRaiseCount = 0;
         SoulIcon.UpdateSoulIcon();

@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     [SerializeField]
     private GameObject gravePrefab;
 
+    public PlayerMovement player;
+
     public bool is_tutorial_NPC = false;
     public bool tutorial_NPC_Died = false;
     public bool is_player = false;
@@ -62,12 +64,30 @@ public class Health : MonoBehaviour
                 Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation);
             } else if(is_paladin)
             {
+                Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    { "numberOfHeals", player.GetComponent<Spells>().number_of_Heals },
+                    { "numberOfShots", player.GetComponent<Spells>().number_of_Shots },
+                    { "numberOfSkeletons", player.GetComponent<Spells>().number_of_Animates },
+                    { "paladinAliveTimer", player.paladinCounter },
+                };
+
+                AnalyticsService.Instance.CustomData("GameEnded", parameters);
                 AnalyticsService.Instance.Flush();
                 victory.SetActive(true);
             }
         } else
         {
-            Analytics.CustomEvent("gameEnded");
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+                {
+                    { "numberOfHeals", player.GetComponent<Spells>().number_of_Heals },
+                    { "numberOfShots", player.GetComponent<Spells>().number_of_Shots },
+                    { "numberOfSkeletons", player.GetComponent<Spells>().number_of_Animates },
+                    { "paladinAliveTimer", player.paladinCounter },
+                };
+
+            AnalyticsService.Instance.CustomData("GameEnded", parameters);
+            AnalyticsService.Instance.Flush();
         }
         Destroy(gameObject);
     }
