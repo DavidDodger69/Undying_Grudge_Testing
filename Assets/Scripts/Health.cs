@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Health : MonoBehaviour
 {
@@ -60,8 +62,12 @@ public class Health : MonoBehaviour
                 Instantiate(gravePrefab, gameObject.transform.position, gameObject.transform.rotation);
             } else if(is_paladin)
             {
+                AnalyticsService.Instance.Flush();
                 victory.SetActive(true);
             }
+        } else
+        {
+            Analytics.CustomEvent("gameEnded");
         }
         Destroy(gameObject);
     }

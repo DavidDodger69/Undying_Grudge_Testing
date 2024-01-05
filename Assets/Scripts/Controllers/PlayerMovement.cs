@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Services.Analytics;
+using Unity.Services.Core;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -16,6 +18,13 @@ public class PlayerMovement : MonoBehaviour
     public float angle;
 
     Vector2 movement;
+
+
+    private void Start()
+    {
+        UnityServices.InitializeAsync();
+        AnalyticsService.Instance.SetAnalyticsEnabled(true);
+    }
 
     // Update is called once per frame
     void Update()
