@@ -24,8 +24,13 @@ public class PaladinController : NPCController
     private float summonTimer = 0.0f;
     public Transform[] summonPlatforms;
 
+    [Header("Testing")]
+    public int bossFightTimeCounter;
+
     public override void FixedUpdate()
     {
+        bossFightTimeCounter++;
+
         findTimer += Time.deltaTime;
         attackTimer += Time.deltaTime;
 

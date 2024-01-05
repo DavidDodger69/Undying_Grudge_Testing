@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     Vector2 movement;
 
+    [Header("Testing")]
+    [SerializeField] GameObject Paladin;
+    public int paladinCounter;
+
 
     private void Start()
     {
@@ -42,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        paladinCounter = Paladin.GetComponent<PaladinController>().bossFightTimeCounter;
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
 
         lookDir = mouseWorldPos - rb.position;
